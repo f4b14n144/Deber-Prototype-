@@ -163,6 +163,9 @@ public class ViewMenu extends JFrame implements ActionListener {
                 
                 ep.loadCache("Mago");
             }
+            else if(seleccionado == "Personajes"){
+                JOptionPane.showMessageDialog(null,"Elija un Guerrero o un Mago","INFO",JOptionPane.ERROR_MESSAGE);
+            }
         }
         
         
