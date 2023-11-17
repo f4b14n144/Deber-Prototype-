@@ -11,7 +11,6 @@ public class ComboBoxPersonajes extends JComboBox<String> {
     public ComboBoxPersonajes(ActionListener listener) {
         this.addItem("Aldeano");
         this.addItem("Guerrero");
-        this.addItem("Mago");
         this.setSize(50, 20);
         this.addActionListener(listener);
     }

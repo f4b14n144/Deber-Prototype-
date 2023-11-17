@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 public class ImagenesPersonajes {
     private static final String directorio = "Visual.ImagenesPersonajes"; // Directory where your images are stored
 
-    public static ImageIcon[] CargarImgGuerrero() 
+    public void CargarImgGuerrero() 
     {
         ImageIcon[] images = new ImageIcon[5]; // Assuming you have 5 images
 
@@ -17,6 +17,6 @@ public class ImagenesPersonajes {
             images[i] = new ImageIcon(imagePath);
         }
 
-        return images;
+      
     }
 }

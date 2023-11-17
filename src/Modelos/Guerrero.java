@@ -4,8 +4,10 @@
  */
 package Modelos;
 
+
 import Visual.MostrarInfoPersonajes;
 import javax.swing.JPanel;
+import Visual.ImagenesPersonajes;
 
 /**
  *
@@ -13,35 +15,33 @@ import javax.swing.JPanel;
  */
 public class Guerrero extends Personaje
 {
-    private int fuerza;
-    private int vidas;
+    private String habilidad;
+    private String equipo;
     private String guerrero;
-     private static MostrarInfoPersonajes mfp= new MostrarInfoPersonajes();
+    private int fuerza;
+    
 
-      @Override
-    JPanel dibujar() 
+    @Override
+    void dibujar() 
     {
-            mfp.mostrarGerrero(getGuerrero(), getFuerza(), getVidas());
-            JPanel jp1=new JPanel();
-            jp1=mfp.getPanel();
-            return jp1;
-   
+
+         
     }
 
-    public int getFuerza() {
-        return fuerza;
+    public String getHabilidad() {
+        return habilidad;
     }
 
-    public void setFuerza(int fuerza) {
-        this.fuerza = fuerza;
+    public void setHabilidad(String Habilidad) {
+        this.habilidad = habilidad;
     }
 
-    public int getVidas() {
-        return vidas;
+    public String getEquipo() {
+        return equipo;
     }
 
-    public void setVidas(int vidas) {
-        this.vidas = vidas;
+    public void setEquipo(String equipo) {
+        this.equipo = equipo;
     }
 
     public String getGuerrero() {
@@ -50,6 +50,14 @@ public class Guerrero extends Personaje
 
     public void setGuerrero(String guerrero) {
         this.guerrero = guerrero;
+    }
+
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
     }
     
     

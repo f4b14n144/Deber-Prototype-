@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public abstract class Personaje implements Cloneable
 {
     private String tipo;
-    abstract JPanel dibujar();
+    abstract void dibujar();
 
     public String getTipo() {
         return tipo;
@@ -24,6 +24,9 @@ public abstract class Personaje implements Cloneable
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
+
+    
    @Override
    public Personaje clone()
    {

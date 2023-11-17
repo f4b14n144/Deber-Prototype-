@@ -21,94 +21,93 @@ public class RegistroPersonajes
     private static Scanner s=new Scanner(System.in);
     private static MostrarInfoPersonajes mfp= new MostrarInfoPersonajes();
     private static Guerrero g1=new Guerrero();
+    private static Mago m1=new Mago();
+    private static Personaje personajeClonado;
     
     public static void loadCache(String tipo)
     {
-        if(tipo.equalsIgnoreCase("guerrero")) //en todo este if hay que cambiarle y encontrar la forma de implementar 
-                                                        //interfaz grafica como pida la profe
+        if(tipo.equalsIgnoreCase("guerrero")) 
         {
-            
-            String guerrero = JOptionPane.showInputDialog("Ingrese el identificador del guerrero");
-            int fuerza = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la fuerza"));
-            int vidas= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de vidas"));
-            
-            loadCacheGuerrero(tipo,fuerza,vidas,guerrero);
+            //valores predeterminados
+            String identificador = "Guerrero1";
+            String habilidad = "Matar";
+            String equipo= "De los buenos";
+            int fuerza= 8;
+            System.out.println("entro");
+            loadCacheGuerrero(tipo,habilidad,equipo,identificador,fuerza);
         }
         else if (tipo.equalsIgnoreCase("mago"))
         {
-            String mago = JOptionPane.showInputDialog("Ingrese el identificador del mago") ;
-            String hechizo = JOptionPane.showInputDialog("Ingrese el hechizo");
+            String identificador = "mago1";
+            String habilidad = "volar";
+            String equipo= "malos";
+            String encanto="congelar";
+            System.out.println("entro");
             
-            loadCacheMago(tipo,hechizo,mago);
         }
-        else if (tipo.equalsIgnoreCase("aldeano"))
-        {
-            
-            String aldeano = JOptionPane.showInputDialog("Ingrese el identificador del aldeano");
-            
-            loadCacheAldenao(tipo,aldeano);
-        }
+      
     }
-    public static void loadCacheGuerrero(String tipo,int fuerza,int vidas,String identificador)
+    public static void loadCacheGuerrero(String tipo,String habilidad,String equipo,String identificador,int fuerza)
     {
         g1.setTipo(tipo);
+        g1.setHabilidad(habilidad);
+        g1.setEquipo(equipo);
         g1.setFuerza(fuerza);
-        g1.setVidas(vidas);
         g1.setGuerrero(identificador);
         
         MapPersonajes.put(g1.getGuerrero(), g1);
+        System.out.println("entro");
+        System.out.println(g1.getEquipo());
+        MostrarInfoPersonajes mip=new MostrarInfoPersonajes();
+        mip.mostrarGerrero(identificador, habilidad, equipo);
+        
         
     }
-     public static void loadCacheAldenao(String tipo,String identificador)
+
+    public static void loadCacheMago(String identificador,String habilidad,String equipo,String encanto)
     {
-        Aldeano a1=new Aldeano();
-        a1.setTipo(tipo);
-        a1.setAldeano(identificador);
-        MapPersonajes.put(a1.getAldeano(), a1);
-    }
-          public static void loadCacheMago(String tipo,String encanto,String identificador)
-    {
-        Mago m1=new Mago();
-        m1.setTipo(tipo);
         m1.setEncanto(encanto);
-        m1.setMago(identificador);
+        m1.setEquipo(equipo);
+        m1.setHabilidad(habilidad);
+        m1.setMago(encanto);
+        
         MapPersonajes.put(m1.getMago(), m1);
     }
     public static void clonar()
     {
-         //De aqui para abajo es para clonar a los personajes 
-        //Igual hay que reemplazar por interfaz grafica como pida la profe
+       
         
         String tipo = JOptionPane.showInputDialog("Ingrese el identificador del personaje al que desea clonar?");
         //System.out.println("Ingrese el identificador del personaje al que desea clonar");
         //String tipo=s.nextLine();
-        Personaje personajeClonado=RegistroPersonajes.getPersonaje(tipo);//aqui falta agregar el tipo, hasta mientras se esta 
-                                                                                  //mandando el string de arriba
-    JOptionPane.showMessageDialog(null, personajeClonado.getTipo());
+        personajeClonado=RegistroPersonajes.getPersonaje(tipo);
+        
+        JOptionPane.showMessageDialog(null, personajeClonado.getTipo());
 
-        personajeClonado.dibujar();//esto llama al metodo y en el metodo esta el override donde 
-                                   //se implementa la interfaz grafica 
+        personajeClonado.dibujar();
     }
     public static Personaje getPersonaje(String idPersonaje)
     {
+        
         Personaje objetoClonado=MapPersonajes.get(idPersonaje);
-        return objetoClonado.clone();
+        
+         personajeClonado= (Guerrero) personajeClonado;
+        String nuevoNombre= JOptionPane.showInputDialog("Ingrese el nuevo nombre del guerrero");
+        
+        return personajeClonado;
     }
     
-    public static String printAtributos(String identificador)
+   /* public static String printAtributos(String identificador)
     {
         Guerrero atributoG = (Guerrero) MapPersonajes.get(identificador);
     
-        int fuerza = atributoG.getFuerza();
-        int vidas = atributoG.getVidas();
-        String labelText = "Fuerza: " + fuerza + " | Vidas: " + vidas+ "";
+        String habilidad = atributoG.getHabilidad();
+        String equipo = atributoG.getEquipo();
+        String labelText = "Fuerza: " + habilidad + " | Vidas: " + equipo + "";
         return labelText;         
-    }
-    public static JPanel panelG()
-    {
-        JPanel jp=new JPanel();
-        jp=g1.dibujar();
-        return jp;
-    }
+    }*/
+    
+    
+
     
 }

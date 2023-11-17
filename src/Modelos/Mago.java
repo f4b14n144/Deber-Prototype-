@@ -20,7 +20,10 @@ public class Mago extends Personaje
 {
     private String encanto;
     private String mago;
-         @Override
+    private String habilidad;
+    private String equipo;
+    
+    @Override
     void dibujar() {
         try {
             BufferedImage image = ImageIO.read(new File("C:\\Users\\jellz\\Downloads\\master9.jpg"));
@@ -50,6 +53,24 @@ public class Mago extends Personaje
     public void setMago(String mago) {
         this.mago = mago;
     }
+
+    public String getHabilidad() {
+        return habilidad;
+    }
+
+    public void setHabilidad(String habilidad) {
+        this.habilidad = habilidad;
+    }
+
+    public String getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(String equipo) {
+        this.equipo = equipo;
+    }
+
+ 
     
     
 }
