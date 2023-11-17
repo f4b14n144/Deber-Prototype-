@@ -42,7 +42,7 @@ public class ViewMenu extends JFrame implements ActionListener {
         UIManager.put("MenuBar.foreground", Color.BLACK);
         
       
-       ImageIcon imagenes = new ImageIcon("imagenes/Ghost.jpeg");
+       ImageIcon imagenes = new ImageIcon("src\\Visual\\ImagenesPersonajes\\Guerrero1.jpg");
 
 
         personajes = new JComboBox<>();
@@ -92,12 +92,12 @@ public class ViewMenu extends JFrame implements ActionListener {
         menuBar.add(menuClonados);
 
         imagenC = new JLabel();
-        imagenC.setSize(180,130);
+        imagenC.setSize(180,300);
         imagenC.setIcon(imagenes);
         
         imagen = new JPanel();
         
-        imagen.setSize(180, 130);
+        imagen.setSize(180, 300);
         imagen.add(imagenC);
         
         
@@ -164,6 +164,7 @@ public class ViewMenu extends JFrame implements ActionListener {
                 ep.loadCache("Mago");
             }
         }
+        
         
     }
 

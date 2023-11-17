@@ -59,7 +59,7 @@ public class RegistroPersonajes
         System.out.println("entro");
         System.out.println(g1.getEquipo());
         MostrarInfoPersonajes mip=new MostrarInfoPersonajes();
-        mip.mostrarGerrero(identificador, habilidad, equipo);
+        //mip.mostrarGerrero(identificador, habilidad, equipo);
         
         
     }
