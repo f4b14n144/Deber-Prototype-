@@ -167,12 +167,38 @@ public class ViewMenu extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null,"Elija un Guerrero o un Mago","INFO",JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+    
         
         
+        private void updateLabels(String selectedPersonaje) {
+        switch (selectedPersonaje) {
+            case "Guerrero":
+                String nombre = JOptionPane.showInputDialog(null,"Ingrese el nombre del guerrero");
+                nombreR.setText(nombre);
+                equipoR.setText("Equipo1");
+                abilidadR.setText("Combat");
+                break;
+                
+            case "Mago":
+                
+                String nombreMa = JOptionPane.showInputDialog(null,"Ingrese el nombre del Mago");
+                nombreR.setText(nombreMa);
+                equipoR.setText("Equipo2");
+                abilidadR.setText("Hechizos");
+            // Add cases for other personajes if needed
+
+            default:
+                // Handle default case or do nothing
+                break;
+        }
     }
 
    
+}
+    
+
+   
 
 
    
-}
