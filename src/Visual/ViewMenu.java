@@ -35,7 +35,7 @@ public class ViewMenu extends JFrame implements ActionListener {
     private JButton botSalir = new JButton("Salir");
     RegistroPersonajes ep = new RegistroPersonajes();
 
-    public ViewMenu() {
+    public void  ViewMenu() {
        menuBar = new JMenuBar();
         menuBar.setBackground(new Color(70, 70, 70));
         menuBar.setForeground(Color.black);
@@ -44,15 +44,13 @@ public class ViewMenu extends JFrame implements ActionListener {
       
        ImageIcon imagenes = new ImageIcon("src\\Visual\\ImagenesPersonajes\\Guerrero1.jpg");
 
-
         personajes = new JComboBox<>();
         personajes.addItem("Personajes");
         personajes.addItem("Guerrero");
         personajes.addItem("Mago");
         personajes.setSelectedIndex(0);
         
-       
-
+        
         abilidad = new JLabel("Abilidad:");
         abilidad.setSize(100, 20);
         abilidad.setLocation(300, 150);
@@ -99,10 +97,6 @@ public class ViewMenu extends JFrame implements ActionListener {
         
         imagen.setSize(180, 300);
         imagen.add(imagenC);
-        
-        
-        
-       
         
 
         Seleccionar = new JButton("Seleccionar");
@@ -171,31 +165,28 @@ public class ViewMenu extends JFrame implements ActionListener {
     
         
         
-        private void updateLabels(String selectedPersonaje) {
-        switch (selectedPersonaje) {
-            case "Guerrero":
-                String nombre = JOptionPane.showInputDialog(null,"Ingrese el nombre del guerrero");
-                nombreR.setText(nombre);
-                equipoR.setText("Equipo1");
-                abilidadR.setText("Combat");
-                break;
+       public void updateLabelsGuerrero(String identificador,String habilidad,String equipo,int fuerza){
                 
-            case "Mago":
+                nombreR.setText(identificador);
+                equipoR.setText(equipo);
+                abilidadR.setText(habilidad);
+              
+       } 
+       
+       public void updateLabelsMago()
+       {
+           
                 
                 String nombreMa = JOptionPane.showInputDialog(null,"Ingrese el nombre del Mago");
                 nombreR.setText(nombreMa);
                 equipoR.setText("Equipo2");
                 abilidadR.setText("Hechizos");
-            // Add cases for other personajes if needed
-
-            default:
-                // Handle default case or do nothing
-                break;
-        }
-    }
+       }
+}
+    
 
    
-}
+
     
 
    

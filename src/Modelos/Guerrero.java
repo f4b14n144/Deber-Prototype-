@@ -5,9 +5,6 @@
 package Modelos;
 
 
-import Visual.MostrarInfoPersonajes;
-import javax.swing.JPanel;
-import Visual.ImagenesPersonajes;
 
 /**
  *
@@ -24,8 +21,7 @@ public class Guerrero extends Personaje
     @Override
     void dibujar() 
     {
-
-         
+       
     }
 
     public String getHabilidad() {

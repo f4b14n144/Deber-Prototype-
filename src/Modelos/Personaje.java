@@ -4,6 +4,8 @@
  */
 package Modelos;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -14,6 +16,7 @@ import javax.swing.JPanel;
  */
 public abstract class Personaje implements Cloneable
 {
+    
     private String tipo;
     abstract void dibujar();
 
@@ -24,7 +27,7 @@ public abstract class Personaje implements Cloneable
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
+  
 
     
    @Override

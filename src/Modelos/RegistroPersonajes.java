@@ -4,7 +4,8 @@
  */
 package Modelos;
 
-import Visual.MostrarInfoPersonajes;
+
+import Visual.ViewMenu;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -19,10 +20,11 @@ public class RegistroPersonajes
 {
     private static Map<String,Personaje> MapPersonajes=new HashMap();
     private static Scanner s=new Scanner(System.in);
-    private static MostrarInfoPersonajes mfp= new MostrarInfoPersonajes();
     private static Guerrero g1=new Guerrero();
     private static Mago m1=new Mago();
     private static Personaje personajeClonado;
+    private static ViewMenu vm1=new ViewMenu();
+    
     
     public static void loadCache(String tipo)
     {
@@ -55,11 +57,10 @@ public class RegistroPersonajes
         g1.setFuerza(fuerza);
         g1.setGuerrero(identificador);
         
+        
         MapPersonajes.put(g1.getGuerrero(), g1);
-        System.out.println("entro");
-        System.out.println(g1.getEquipo());
-        MostrarInfoPersonajes mip=new MostrarInfoPersonajes();
-        //mip.mostrarGerrero(identificador, habilidad, equipo);
+        vm1.updateLabelsGuerrero(identificador, habilidad, equipo, fuerza);
+      
         
         
     }
@@ -78,8 +79,7 @@ public class RegistroPersonajes
        
         
         String tipo = JOptionPane.showInputDialog("Ingrese el identificador del personaje al que desea clonar?");
-        //System.out.println("Ingrese el identificador del personaje al que desea clonar");
-        //String tipo=s.nextLine();
+       
         personajeClonado=RegistroPersonajes.getPersonaje(tipo);
         
         JOptionPane.showMessageDialog(null, personajeClonado.getTipo());
@@ -97,16 +97,7 @@ public class RegistroPersonajes
         return personajeClonado;
     }
     
-   /* public static String printAtributos(String identificador)
-    {
-        Guerrero atributoG = (Guerrero) MapPersonajes.get(identificador);
-    
-        String habilidad = atributoG.getHabilidad();
-        String equipo = atributoG.getEquipo();
-        String labelText = "Fuerza: " + habilidad + " | Vidas: " + equipo + "";
-        return labelText;         
-    }*/
-    
+
     
 
     
