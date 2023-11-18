@@ -4,6 +4,7 @@
  */
 package Visual;
 
+import Modelos.Guerrero;
 import Modelos.RegistroPersonajes;
 import javax.swing.*;
 import java.awt.*;
@@ -24,18 +25,32 @@ public class ViewMenu extends JFrame implements ActionListener {
     private JMenuItem entrar;
     private JPanel panel1;
     private JLabel nombre;
-    private JLabel abilidad;
+    private JLabel Habilidad;
     private JLabel equipo;
     private JPanel imagen;
-    private JLabel abilidadR;
+    private JLabel habilidadR;
     private JLabel equipoR;
     private JLabel nombreR;
     private JLabel imagenC;
+    private RegistroPersonajes ep;
+   
 
     private JButton botSalir = new JButton("Salir");
-    RegistroPersonajes ep = new RegistroPersonajes();
+  
+    
+    Guerrero g1 = new Guerrero();
 
-    public void  ViewMenu() {
+    public void  ViewMenu(RegistroPersonajes ep) {
+        
+        this.ep =   ep;
+        ep = new RegistroPersonajes();
+        
+        String indetificador = "Guerrero 1";
+        String habilidad ="Matar";
+        String equipoG = "Equipo 1";
+        
+        int fuerza = 33;
+        
        menuBar = new JMenuBar();
         menuBar.setBackground(new Color(70, 70, 70));
         menuBar.setForeground(Color.black);
@@ -49,15 +64,20 @@ public class ViewMenu extends JFrame implements ActionListener {
         personajes.addItem("Guerrero");
         personajes.addItem("Mago");
         personajes.setSelectedIndex(0);
+        personajes.addActionListener(this);
+       
+    
         
         
-        abilidad = new JLabel("Abilidad:");
-        abilidad.setSize(100, 20);
-        abilidad.setLocation(300, 150);
+        
+        
+        Habilidad = new JLabel("Abilidad:");
+        Habilidad.setSize(100, 20);
+        Habilidad.setLocation(300, 150);
 
-        abilidadR = new JLabel("Texto");
-        abilidadR.setSize(100, 20);
-        abilidadR.setLocation(380, 150);
+        habilidadR = new JLabel("Texto");
+        habilidadR.setSize(100, 20);
+        habilidadR.setLocation(380, 150);
         
 
         nombre = new JLabel("Nombre: ");
@@ -116,12 +136,12 @@ public class ViewMenu extends JFrame implements ActionListener {
         this.add(personajes);
         this.add(Seleccionar);
         this.add(Clonar);
-        this.add(abilidad);
+        this.add(Habilidad);
         this.add(nombre);
         this.add(equipo);
         this.add(equipoR);
         this.add(nombreR);
-        this.add(abilidadR);
+        this.add(habilidadR);
         
         personajes.setSize(160, 30);
         personajes.setLocation(30, 60);
@@ -135,52 +155,47 @@ public class ViewMenu extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == entrar) {
+   public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == personajes) {
+        String selectedCharacter = (String) personajes.getSelectedItem();
+
+        if ("Guerrero".equals(selectedCharacter)) {
             
-            ep.loadCache("Guerrero");
             
-            
-            
-        } else if (e.getSource() == menuPersonajes) {
-            // Trigger action to go to another class for Personajes
-        }
-        
-        else if(e.getSource() == Seleccionar){
-            
-            String seleccionado = (String) personajes.getSelectedItem();
-            
-            if(seleccionado == "Guerrero"){
-                ep.loadCache("Guerrero");
-            }
-            else if(seleccionado == "Mago"){
-                
-                ep.loadCache("Mago");
-            }
-            else if(seleccionado == "Personajes"){
-                JOptionPane.showMessageDialog(null,"Elija un Guerrero o un Mago","INFO",JOptionPane.ERROR_MESSAGE);
-            }
+            // Load the cache
+            ep.loadCacheGuerrero();
+           
+        } else if ("Mago".equals(selectedCharacter)) {
+           
+            ep.loadCacheMago(selectedCharacter, "Hechizos", "equipo 2", "convierte a raton");
         }
     }
+}
+
+      
     
-        
-        
-       public void updateLabelsGuerrero(String identificador,String habilidad,String equipo,int fuerza){
-                
-                nombreR.setText(identificador);
-                equipoR.setText(equipo);
-                abilidadR.setText(habilidad);
-              
-       } 
+      
+
+   public void updateLabelsGuerrero(String nombreL, String equipo1LG, String habilidadGG, int fuerzaGG) {
+            System.out.println("entro labels");
+            System.out.println(nombreL+" "+habilidadGG+" "+fuerzaGG);
+            nombreR.setText(nombreL);
+            equipoR.setText(equipo1LG);
+            habilidadR.setText(habilidadGG);
+            // Use fuerzaGG as needed
+}
+
        
-       public void updateLabelsMago()
+       public void updateLabelsMago(String equipo,String habilidad)
        {
+           System.out.println("labels mago entro");
+           System.out.println(equipo + " "+habilidad);
            
                 
                 String nombreMa = JOptionPane.showInputDialog(null,"Ingrese el nombre del Mago");
-                nombreR.setText(nombreMa);
+                //nombreR.setText(nombreMa);
                 equipoR.setText("Equipo2");
-                abilidadR.setText("Hechizos");
+                habilidadR.setText("Hechizos");
        }
 }
     

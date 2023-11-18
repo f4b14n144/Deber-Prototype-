@@ -24,9 +24,11 @@ public class RegistroPersonajes
     private static Mago m1=new Mago();
     private static Personaje personajeClonado;
     private static ViewMenu vm1=new ViewMenu();
+    public String equipoM;
+    public String habilidadM;
     
     
-    public static void loadCache(String tipo)
+    public  void loadCache(String tipo)
     {
         if(tipo.equalsIgnoreCase("guerrero")) 
         {
@@ -36,7 +38,7 @@ public class RegistroPersonajes
             String equipo= "De los buenos";
             int fuerza= 8;
             System.out.println("entro");
-            loadCacheGuerrero(tipo,habilidad,equipo,identificador,fuerza);
+            loadCacheGuerrero();
         }
         else if (tipo.equalsIgnoreCase("mago"))
         {
@@ -49,30 +51,42 @@ public class RegistroPersonajes
         }
       
     }
-    public static void loadCacheGuerrero(String tipo,String habilidad,String equipo,String identificador,int fuerza)
-    {
-        g1.setTipo(tipo);
-        g1.setHabilidad(habilidad);
-        g1.setEquipo(equipo);
-        g1.setFuerza(fuerza);
-        g1.setGuerrero(identificador);
-        
-        
-        MapPersonajes.put(g1.getGuerrero(), g1);
-        vm1.updateLabelsGuerrero(identificador, habilidad, equipo, fuerza);
-      
-        
-        
-    }
+    public void loadCacheGuerrero() {
+            String tipo = "Guerrero";
+            String nombre = "Joseph ";
+            String habilidad = "Matar";
+            String equipo = "Equipo 1";
+            int fuerza = 33;
+            String fuerzaS = Integer.toString(fuerza);
+            String indentificador = "Guerrero 1";
+            g1.setTipo(tipo);
+            g1.setHabilidad(habilidad);
+            g1.setEquipo(equipo);
+            g1.setFuerza(fuerza);
+            g1.setGuerrero(indentificador);
 
-    public static void loadCacheMago(String identificador,String habilidad,String equipo,String encanto)
+            MapPersonajes.put(g1.getGuerrero(), g1);
+            
+            
+            vm1.updateLabelsGuerrero(nombre, equipo, habilidad, fuerza);
+
+           
+        }
+
+
+    public  void loadCacheMago(String identificador,String habilidad,String equipo,String encanto)
     {
+        
+        this.equipoM = equipo;
+        this.habilidadM = habilidad;
+        
         m1.setEncanto(encanto);
         m1.setEquipo(equipo);
         m1.setHabilidad(habilidad);
         m1.setMago(encanto);
         
         MapPersonajes.put(m1.getMago(), m1);
+        vm1.updateLabelsMago(equipoM,habilidadM);
     }
     public static void clonar()
     {

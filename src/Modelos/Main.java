@@ -11,8 +11,10 @@ public class Main {
    
     public static void main(String[] args) 
     {
+        
+        RegistroPersonajes ep = new RegistroPersonajes();
         ViewMenu vm= new ViewMenu();
-        vm.ViewMenu();
+        vm.ViewMenu(ep);
         
     }
 }
